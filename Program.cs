@@ -15,9 +15,7 @@ class Program
     {
         char[] delimitador = { ',', ' ', '.', ':' };
         var textoLimpo = Regex.Replace(texto.Trim(), @"\s", string.Empty);
-        var palavras = textoLimpo.Split(delimitador);
-        foreach (var lt in palavras)
-            Console.WriteLine(lt);
+        var palavras = textoLimpo.Split(delimitador).ToList().Where(a => a != string.Empty);
         return palavras.Count();
     }
 
@@ -26,5 +24,4 @@ class Program
         var letra = texto.Replace(" ", "").Replace(",", "").Replace(".", "").Replace(":", "");
         return letra.Count();
     }
-
 }
