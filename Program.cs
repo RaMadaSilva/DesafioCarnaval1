@@ -14,7 +14,8 @@ class Program
     static int ContarPalavras(string texto)
     {
         char[] delimitador = { ',', ' ', '.', ':' };
-        var palavras = texto.Replace(" ", "").TrimEnd().Split(delimitador).ToList();
+        var textoLimpo = Regex.Replace(texto.Trim(), @"\s", string.Empty);
+        var palavras = textoLimpo.Split(delimitador);
         foreach (var lt in palavras)
             Console.WriteLine(lt);
         return palavras.Count();
@@ -22,7 +23,7 @@ class Program
 
     static int ContadorLetras(string texto)
     {
-        var letra = texto.Replace(" ", "").Replace(",", "").Replace(".", "");
+        var letra = texto.Replace(" ", "").Replace(",", "").Replace(".", "").Replace(":", "");
         return letra.Count();
     }
 
